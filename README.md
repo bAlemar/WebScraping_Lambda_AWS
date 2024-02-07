@@ -4,11 +4,11 @@ Antes de rodar um container no seu computador, certifique-se de ter o seguinte i
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/bAlemar/Preco-Imoveis.git
+   git clone https://github.com/bAlemar/WebScraping_Lambda_AWS.git
 
 2. **Navegue até o diretório do Docker no repositório clonado:**
    ```bash
-   cd Preco-Imoveis/DockerSelenium
+   cd WebScraping_Lambda_AWS
 
 3. **Construa sua imagem:**
    ```bash
