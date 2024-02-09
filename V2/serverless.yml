@@ -1,0 +1,43 @@
+service: testando
+
+#Gerando as permissões necessárias
+provider:
+  name: aws
+  iam:
+    role:
+      statements:
+        # Allow functions to list all buckets
+        - Effect: Allow
+          Action: 
+            - 's3:PutObject'
+            - 's3:GetObject'
+            - 's3:ListBucket'
+          Resource: '*'
+  stage: ${opt:stage, 'prod'}
+  region: ${env:AWS_REGION, 'us-east-1'}
+
+# Upando Imagem do Docker para ECR
+  ecr:
+    images:
+      img:
+        path: ./
+        platform: linux/amd64
+
+# Criando S3 Bucket
+resources:
+  Resources:
+    MyS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: webscraping-zap 
+
+# Criando a função Lambda AWS
+functions:
+  demo:
+    timeout: 120
+    # If you experience any errors such as Chrome crashing or not being available you might need to increase the storage available to your Lambda Function. See #102
+    memorySize: 2048
+    image:
+      name: img
+
+
