@@ -30,5 +30,5 @@ Antes de rodar um container no seu computador, certifique-se de ter o seguinte i
    sls deploy
 6. **Chame a função Lambda AWS**
    ```bash
-   sls invoke --functon demo
+   sls invoke --function demo
 
